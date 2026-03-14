@@ -1,1 +1,360 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  --color-primario: #1565c0;
+  --color-primario-claro: #1976d2;
+  --color-primario-oscuro: #0d47a1;
+  --color-secundario: #00897b;
+  --color-secundario-claro: #26a69a;
+  --color-acento: #ff6f00;
+  --color-fondo: #f0f4f8;
+  --color-superficie: #ffffff;
+  --color-barra-lateral: #1a237e;
+  --color-barra-lateral-oscuro: #0d1b5e;
+  --color-texto-primario: #1a1a2e;
+  --color-texto-secundario: #546e7a;
+  --color-borde: #e0e7ef;
+  --color-exito: #2e7d32;
+  --color-advertencia: #e65100;
+  --color-error: #c62828;
+  --color-info: #0277bd;
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --sombra-fuerte: 0 8px 32px rgba(0, 0, 0, 0.18);
+  --radio-borde: 12px;
+  --radio-borde-pequeno: 8px;
+  --transicion: all 0.25s ease;
+}
+
+/* ===== RESET Y BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto-primario);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #b0bec5; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #78909c; }
+
+/* ===== ANGULAR MATERIAL OVERRIDES ===== */
+.mat-mdc-card {
+  border-radius: var(--radio-borde) !important;
+  box-shadow: var(--sombra-suave) !important;
+}
+
+/* Formularios más compactos */
+.mat-mdc-form-field-infix {
+  min-height: 42px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.mat-mdc-text-field-wrapper {
+  padding: 0 10px !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label {
+  font-size: 13px !important;
+}
+
+.mat-mdc-form-field input.mat-mdc-input-element,
+.mat-mdc-form-field textarea.mat-mdc-input-element {
+  font-size: 13px !important;
+}
+
+.mat-mdc-select-value-text {
+  font-size: 13px !important;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--color-primario) !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mdc-data-table {
+  border-radius: var(--radio-borde-pequeno);
+  overflow: hidden;
+}
+
+/* ===== CLASES UTILITARIAS ===== */
+.contenedor-pagina {
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+.tarjeta {
+  background: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.encabezado-pagina {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.encabezado-pagina h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-texto-primario);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.encabezado-pagina h1 mat-icon {
+  color: var(--color-primario);
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+/* ===== BADGES DE ESTADO ===== */
+.estado-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.estado-activo, .estado-disponible, .estado-confirmada {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.estado-inactivo, .estado-cancelada, .estado-no_asistio {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.estado-programada {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.estado-en_curso {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.estado-completada {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.estado-mantenimiento {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.estado-ocupada {
+  background: #fce4ec;
+  color: #880e4f;
+}
+
+/* ===== CUADRICULAS ===== */
+.cuadricula-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.cuadricula-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cuadricula-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .cuadricula-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .cuadricula-2, .cuadricula-3, .cuadricula-4 {
+    grid-template-columns: 1fr;
+  }
+  .contenedor-pagina { padding: 16px; }
+}
+
+/* ===== TABLA ===== */
+.tabla-contenedor {
+  overflow-x: auto;
+  border-radius: var(--radio-borde-pequeno);
+  box-shadow: var(--sombra-suave);
+}
+
+table.mat-mdc-table {
+  width: 100%;
+  background: white;
+}
+
+.mat-mdc-header-row {
+  background-color: #f5f7fa !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--color-texto-secundario) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mat-mdc-row:hover {
+  background-color: #f0f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* ===== BARRA DE BUSQUEDA ===== */
+.barra-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.barra-busqueda mat-form-field {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* ===== FORMULARIOS ===== */
+.formulario-contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.seccion-formulario {
+  background: white;
+  border-radius: var(--radio-borde);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--sombra-suave);
+}
+
+.seccion-titulo {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primario);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e3f2fd;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.acciones-formulario {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-borde);
+}
+
+/* ===== CHIPS ===== */
+.chip-tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.chip-primera_vez { background: #e8eaf6; color: #3949ab; }
+.chip-control { background: #e0f2f1; color: #00695c; }
+.chip-urgencia { background: #ffebee; color: #b71c1c; }
+.chip-procedimiento { background: #fff3e0; color: #bf360c; }
+
+/* ===== AVATAR ===== */
+.avatar-circulo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.avatar-medico { background: #e3f2fd; color: #1565c0; }
+.avatar-paciente { background: #e8f5e9; color: #2e7d32; }
+
+/* ===== BOTONES ===== */
+.boton-primario {
+  background-color: var(--color-primario) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+
+.boton-secundario {
+  border: 2px solid var(--color-primario) !important;
+  color: var(--color-primario) !important;
+  border-radius: 8px !important;
+}
+
+.boton-peligro {
+  background-color: var(--color-error) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+/* ===== MENSAJE VACIO ===== */
+.sin-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-texto-secundario);
+}
+
+.sin-resultados mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  opacity: 0.3;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+.sin-resultados p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
